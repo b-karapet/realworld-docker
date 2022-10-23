@@ -1,14 +1,8 @@
-FROM node:16
-
+FROM node:16-alpine3.15
 WORKDIR /usr/src/app
-
 COPY package.json ./
 COPY yarn.lock ./
-
 RUN yarn install
-
 COPY . .
-
-EXPOSE 8080
-
+EXPOSE 3001
 CMD [ "yarn", "start" ]

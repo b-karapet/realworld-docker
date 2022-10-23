@@ -1,0 +1,15 @@
+version: "1.0"
+services:
+  api:
+    build: ./api
+    command: yarn start
+    ports: 
+      - "3001:3001"
+    environment:
+      PORT: 3001
+      HOST: 127.0.0.1
+      MONGO_URL: mongodb://mongo_api:27017/my_db
+    depends_on:
+      - mongo_api
+  mongo_api:
+    image: "mongo:latest"
